@@ -6,10 +6,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>moon</title>
 </head>
-<body>
 <script>
-    document.write("moon<br>");// 출력;
-    document.write("안녕")
+/*
+moblie=prompt("moblie 번호 입력하기");
+while(moblie!=""){
+        s=prompt("주소입력");
+        if(s==""){
+            k=confirm("다시 입력할꺼야?");
+            if(k==true){
+                s=prompt("주소입력");
+                
+            }else{
+                break;
+            }
+        }
+        document.write(moblie+"<br>");
+        document.write(s)
+        moblie=prompt("moblie 번호 입력하기");
+}*/
+
+/*k=prompt("성별")
+if(k=='f'){
+    document.write("여성");
+}else if(k=='m'){
+    document.write("남성")
+}else{
+    document.write("넌 누구냐")
+} */
+
+/*
+for (i=1;i<100;i++){
+    if(i%2!=0){
+        document.write("요놈은 홀수"+i+'<br>'); 
+    }
+    if(i%2==1){
+        document.write(i+'<br>')
+    }
+}*/
+//피보나치 수열
+/*a=0;
+b=1;
+for(c=0;c<=1000;c=a+b){
+    a=b;
+    b=c;
+    document.write(c+'<br>');
+}*/
+/*
+a=0;
+b=1;
+c=0;
+while(c<=1000){
+    c=a+b;
+    document.write(c+",");
+    a=b;
+    b=c;
+    c=a+b;
+}*/
+//소수구하깅
+for(i=1;i<=100;i++){
+    s=0;
+    for(a=1;a<=i;a++){
+        if(i%a==0){
+            s=s+1;
+        }
+    }
+    if(s==2){
+       // document.write('요놈이 소수:'+i+'<br>')
+       //out(i);
+       
+       document.write('요놈이 소수:'+out2(i)+'<br>')
+    }
+}
+function out(i){
+    document.write('요놈이 소수:'+i+'<br>')
+}
+function out2(i){
+    return i;
+}
 </script>
+<body>
+<h1>한현문!!</h1>
+
 </body>
+
 </html>
