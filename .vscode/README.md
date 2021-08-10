@@ -52,4 +52,22 @@ if(){
     return- 있으면 반환값 있는 함수/
             없으면 반환값 없는 함수.-> 없는 함수도 함수 중간에 return(호출했던부위로 돌아감)사용 가능 .단,반환값은 없음.           
 }
-함수는 여러번
+
+
+#### 20210810(화)
+- 자바 스크립트 배열 선언: var ar=[];//var ar=new Array();  = 자바 ArrayList와 비슷(추가 /삭제 수정이 자유롭다.)
+getElementsByName 은 배열로 호출 [] 인덱스값을 넣어줘야함.
+
+setTimeout// clearTimeout
+(일정 시간후에 1회 실행/취소) :
+function getResult(){
+    setTimeout(showText,3000);
+}
+function showText(){
+    document.getElementsByName('point')[0].value="3초가 지났습니다."
+}
+
+ //
+
+setInterval // clearlnterval
+(일정 시간 간격으로 실행/취소)
