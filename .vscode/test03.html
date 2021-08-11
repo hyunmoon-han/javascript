@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.a {
+    background-color:yellow; 
+    color:blue;
+}
+.b {
+    background-color:white;
+    color:red
+};
+
+
+</style>
+<body>
+    <input type="button" value='시작' name="on" id='on'>
+    <!-- <input type="button" value='zz' id=point >
+    <input type="button" value='zz' id=point2 >  -->
+
+    <input type="text" name=point id="point" ><br>
+    <input type="button" id=btnShow value="Show">
+    <input type="button" id="btnClear" value="Clear">
+    <input type=""
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script>
+    
+let ac;
+let sc;
+let timer;
+$(document)
+.ready(function(){
+    $('#point').val(50);
+    $('#btnClear').fadeOut();//hide  빠르게 사라짐. 바뀐 거처럼 연출가능.
+    
+})
+.on('click','#btnClear',function(){
+    $('#point').removeClass('b');
+    $('#point').val("초기화@!@@!");
+    $(this).hide();
+    $('#btnShow').show();
+    //$('#point').css('background-color','yellow');
+    $('#point').addClass('a');
+    
+   
+})
+.on('click','#btnShow',function(){
+    $('#point').removeClass('a');
+    $('#point').val(100);
+    $(this).fadeOut();//$('#btnClear').hide();
+    $('#btnClear').fadeIn();//$('#btnClear').show();
+    //$('#point').css('background-color','white');
+// b={'background-color':'white','color':'red'};
+    //$('#point').css(b); 
+    $('#point').addClass('b');
+    
+})
+.on("click",'#on',function(){
+    sc=6;
+        ac=setInterval(function(){
+            sc=sc-1;
+            $('#on').val(sc);
+            if(sc==0){
+                $('#on').val(sc);
+                setTimeout(function(){
+                    clearInterval(ac);
+                    $('#on').val('시작');
+                },1000);
+            }
+        },1000);
+});
+
+
+
+
+     /*기초 테스트:
+       function onc(){
+            console.log('캬캬');
+            $("#point2").val(10)
+        }
+         $(document)
+        .on('click','#point',function(){console.log('zz');})//onc
+        .on('click','#point2',onc); 
+       
+      
+        $('#point').click(onc); 
+        */ 
+    
+/* 자바스크립트 시간마다 value값바꾸기
+        let sc;
+        let ac;
+        function doStart(){
+            sc=6;
+            ac=setInterval(function(){
+                sc=sc-1;
+                document.getElementsByName('on')[0].value=sc;
+                console.log(sc);
+                if(sc==0){
+                    document.getElementsByName('on')[0].value=sc;
+                    setTimeout(function(){
+                        clearInterval(ac);
+                        document.getElementsByName('on')[0].value="시작";
+                    },1000);
+                }
+            },1000);
+        }*/
+/* 방법2: function doStart2(){
+        gn=5;
+        timer=setInterval(shoText,1000);
+    }
+    function showText(){
+        if(gn<1){
+            clearInterval(timer);
+            document.getElementsByName('on')[0].value='시작';
+            return;
+        }
+        document.getElementsByName('on')[0].value=gn;
+        gn--;
+
+    }        
+}*/  
+
+
+</script>
+
+
+
+</html>

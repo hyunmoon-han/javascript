@@ -44,7 +44,11 @@
    
 </body>
 <script>
-var arPoint=[]; 
+var arPoint=[,,,,,]
+document.write(arPoint);
+document.write(arPoint.length);
+
+
 sum=0;
 let gn;
 let timer;
@@ -98,7 +102,7 @@ function getResult(){
 //function getResult(){
     // gn=2;
     // timer=setInterval(showText,2000);
-    //setTimeout(showText,3000);
+    //setTimeout(showText,3000);  -  호출이 아니라 () 안붙힘-콜백=직접호출이 아니고, 실해을 등록해놓고 맞으면 웹브라우저 실행.
     // setTimeout(function(){
     //     document.getElementsByName('point')[0].value="초기화.";
 

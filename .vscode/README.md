@@ -1,3 +1,55 @@
+
+#### 20210811(수)test03
+- 콜백 : 실행을 등록해 놓고 맞으면 웹브라우저가 실행
+- <form action="서브프로그램" method="post/get">
+    <input>....
+    <input type=submit/reset> =방와쇠(데이터를 서버에 전달)/입력태그를 비움.
+  </from>\
+  이벤트(event):on
+    blur:focus가 떠났을 떄
+    focus:마우스 왼쪽버튼이 눌려서 focus가 들어왔을떄.
+    click:마우스 왼쪽 버튼이 클릭됐을 때
+    dlbclick:마우스 왼쪽버튼이 더블 클릭 됐을 때
+    change:html tag안의 값이변경 됐을떄 
+    
+-lable태그:for 속성을 사용하여 다른 요소와 결합할 수 있으며, 이때 <label> 요소의 for 속성값은 결합하고자 하는 요소의 id 속성값과 같아야. 요소를 결합하고자 하는 요소 내부에 위치시키면 for 속성을 사용하지 않더라도 해당 요소와 결합시킬 수 있습니다.텍스트를 클릭할 경우 <label> 요소와 연결된 요소를 곧바로 선택할 수 있어 사용자의 편의성을 높일 수 있습니다.
+ 
+
+  
+
+#### 20210810(화) -test02
+- 자바 스크립트 배열 선언: var ar=[10];//var ar=new Array(10);  =길이가 10인 배열선언. 
+자바 ArrayList와 비슷(추가 /삭제 수정이 자유롭다.)
+
+1.추가:push() -> 인덱스 마지막에 추가-자바의 add()와 동일
+-배열 출력:ar[index]
+2. 수정 :ar[index]=값
+3. 삭제: -3가지: -첫 인덱스 값 삭제: shift(); -리턴값으로 사용가능
+                -delete a[index];
+                -마지막 인덱스 값 삭제:k=a.pop(); - 리턴값으로 삭제한 값을 받음.          
+
+- getElementsByName 은 배열로 호출 [] 인덱스값을 넣어줘야함.
+
+- input 태크- 스트링으로 입력됨.
+
+- setTimeout// clearTimeout(특정시간후 취소할떄사용.)
+(일정 시간후에 1회 실행/취소) :
+function getResult(){
+    setTimeout(showText,3000);
+}
+function showText(){
+    document.getElementsByName('point')[0].value="3초가 지났습니다."
+}
+
+- setInterval // clearlnterval
+(일정 시간 간격으로 실행/취소)
+timer=setInterval(showText,2000);//clearInterval(timer)
+-자바스크립트 객체: vs배열은 순서가 있지만 자바스크립트는 순서가 의미가 없다.
+선언-var obj={};->빈객체선언 ,객체는 k-v로 이루어짐(json(제이슨)포맷(형식).)
+추가:obj['key']='v';  -v에는 함수도 사용가능 ->{key:funciont(){},함수()}
+wkqktm
+
+####
 자바스크립트
 특징  - 배열이 java- ArrayList와 많이 비슷.
      - 문법이 자바와 많이 비슷 .
@@ -54,20 +106,4 @@ if(){
 }
 
 
-#### 20210810(화)
-- 자바 스크립트 배열 선언: var ar=[];//var ar=new Array();  = 자바 ArrayList와 비슷(추가 /삭제 수정이 자유롭다.)
-getElementsByName 은 배열로 호출 [] 인덱스값을 넣어줘야함.
 
-setTimeout// clearTimeout
-(일정 시간후에 1회 실행/취소) :
-function getResult(){
-    setTimeout(showText,3000);
-}
-function showText(){
-    document.getElementsByName('point')[0].value="3초가 지났습니다."
-}
-
- //
-
-setInterval // clearlnterval
-(일정 시간 간격으로 실행/취소)
