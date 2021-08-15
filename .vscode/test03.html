@@ -26,12 +26,24 @@
     <input type="text" name=point id="point" ><br>
     <input type="button" id=btnShow value="Show">
     <input type="button" id="btnClear" value="Clear">
-    <input type=""
+    <select  id='pp' class="form-select" size="7" aria-label="size 3 select example"
+                 style=" margin-left: 90px;">
+                    <option selected>Suite Room</option>
+                    <option>Family Room</option>
+                    <option >Double Room</option>
+                    <option >Single Room</option>
+                    <option >Domitory</option>
+                </select>
+    <input type="button" id="ppp">
 </body>
+
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <script>
-    
+   $('#pp').click(function(){
+    a=$('#pp').val();
+    $("#point").val(a)
+   });
 let ac;
 let sc;
 let timer;

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+    <h2>체크박스</h2>
+<label><input type="checkbox" name="checkbox" value="chk1">chk1</label>
+<label><input type="checkbox" name="checkbox" value="chk2">chk2</label>
+<label><input type="checkbox" name="checkbox" value="chk3">chk3</label>
+
+<input type="checkbox" name="pick" id="aa">재테크
+    <input type="checkbox" name="pick" id="bb" value="부동산">부동산
+    <input type="checkbox" name="pick" id="cc" value="주식">주식
+    <input type="checkbox" name="pick" id="dd">채권
+    <br>
+    <input type="checkbox" name="pick" id="ee">선물/옵션
+    <input type="checkbox" name="pick" id="ff">해외투자
+    <input type="checkbox" name="pick" id="gg">공격
+    <br>
+
+    <button onclick="getValue()">g</button>
+
+<button type="button" onclick="acc()">초기화</button>
+
+</body>
+<script>
+  
+
+    function getValue(){
+        if($("input[name=pick]").is(':checked')){
+            $("input[name=pick]:checked").each(function(){
+            
+            console.log($(this).val());
+        });
+        }else{
+            alert("zz");
+            return false;
+        }
+        
+        
+    }
+    function remove(){
+        $("input[name=checkbox]:checked").each(function(){
+            
+            console.log($(this).prop('checked',false));
+        });
+    }
+
+</script>
+
+</html>

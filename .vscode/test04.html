@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+    Text:&nbsp;<input type="text" id="texName"><br>
+    Hidden:<input type="hidden" id="txtHidden" value="moon"><br>
+    Radio:<input type="radio" name="gender" id="male" >남성
+    <input type="radio" name="gender" id="female">여성<br>
+    Number:<input type="number" id=txtNum><br>
+    Checkbox:<input type="checkbox" name="hobby" id="movie" >영화보기
+    <input type="checkbox" name="hobby" id="riding">모터사이클
+    <input type="checkbox" name="hobby" id="climbing">등산<br>
+    Textarea:<textarea name="txtAddress" id="txtAddress" cols="30" rows="3"></textarea><br>
+    Select:<select  id="selNation" size="5">
+        <option value="Korea">대한민국</option>
+        <option value="USA">USA</option>
+        <option value="FR">France</option>
+        <option value="UK">Engliand</option>
+    </select><br>
+    <button id=btnShow>보기</button>
+    <button id=btnShow2>쓰기</button>
+    <div id=dvShow style="background-color: aqua; width: 500px;height: 300px; border:solid black; " ></div>
+</body>
+<script>
+$(document)
+.on("click","#btnShow",function(){
+    str1=$('#texName').val();
+    str2=$('#txtHidden').val();
+    if($('#male').is(':checked')){
+        str3='male';
+    }else if($("#female").is(':checked')){
+        str3='female';
+    }
+        alert('성별 픽미픽미');
+        return false;//이 이하는 않하고 끝;
+    
+    str4=$("#txtNum").val();
+
+    if($('#movie').is(":checked")){
+        str5='영화보기';
+    }
+    if($('#riding').is(":checked")){
+        str5+='모터사이클'
+    }
+    if($('#climbing').is(":checked")){
+        str5+='등산'
+    }else{
+        
+        return false;
+    }
+    
+    str6=$('#txtAddress').val();
+    str7=$("#selNation").val();
+    str=str1+'<br>'+str2+'<br>'+str3+'<br>'+str4+'<br>'+str5+'<br>'+str6+'<br>'+str7;
+    $("#dvShow").html(str);
+})
+.on('click','#btnShow2',function(){
+    $('#texName').val("뭐무머");
+    $("#female").prop('checked',true);//라이오 값 넣기
+    $("#txtMun").val(150);//var()자동으로 문자열로 변환
+    $("#movie").prop("checked",true);//체크시킨다는뜻
+    $("#climbing").prop("checked",true);//값을 넣을떄는 :안붙힘  property속성
+    $("#txtAddress").val("zzzzzzzzz");
+    $("#selNation").val("USA");//여기서는 option에 value의 값을 넣어야함.아니면 컴퓨터가 값을 못찾음
+})
+.on('blur',"#texName",function(){//콜백
+    alert($(this).val());
+    return false;//정상 종류하면 붙여줘
+});
+</script>
+</html>

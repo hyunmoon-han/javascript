@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<style>
+    td{
+        width: 100px;
+        height: 50px;
+        border: 1px solid black;
+    }
+    table{
+        border-collapse: collapse ;
+        
+    }
+    /*th{
+        border: 1px solid white;
+        background-color: chartreuse;
+        color: rgb(156, 96, 204);
+        width: 100px;
+        height: 50px;
+    } -->*/
+
+    
+</style>
+<body>
+    <!-- <table border=1 id="tbl">
+   <tr><td></td><td></td><td></td></tr>
+   <tr><td></td><td></td><td></td></tr>
+   <tr>
+       <td><input type="button" id="btnDelete" value="Delete"></td>
+    <td><input type='button' id=btnPreppend value="Preppend"></td>
+    <td><input type="button" id="btnGo" value="GO" ></td>
+</tr>
+</table>  -->
+<input type="button" id="btnAdd" value="Add">
+<input type="button" id="btnAdd2" value="추가">
+<input type="button" id="btndelete" value="delete">
+<input type="button" id="check" value="check">
+<input type="button" id='btnd' value="초기화">
+<input type="button" id='snake' value="snake">
+<input type="button" id='snail' value="snail">
+<input type="button" id='su' value="테이블추가" onclick="su()">
+<!-- < <table id="tbl">
+    <tr><th>이름</th><th>모바일</th><th>수학</th></tr>  
+    
+</table>  -->
+<table border=1 id="tbl">
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+<br><br>
+<table border=1 id='tbl2'> 
+
+</table>
+</body>
+<script>
+    n=1;
+    let qwer='<td></td>'
+    let sum;
+    let cce='';
+    let y=1;
+    let q=$('#tbl tr').length;
+    w=$("#tbl").find('tr:eq(0) td').length;
+    //let w=$('#tbl tr:eq(0) td').length;
+   
+   
+    //테이블 추가
+    function su(){
+        o=5;
+        m=prompt("수를 입력하세요.");
+        for(i=0;i<m;i++){
+            $("#tbl2").append("<tr></tr>");
+            for(j=0;j<m;j++){
+                $("#tbl2 ").find('tr:eq('+i+')').append('<td></td>');
+            }
+        }
+        c=0;
+        d=m;
+        for(b=0;b<m;b++){
+            if(b%2==0){
+                for(a=c;a<d;a++){
+                    $("#tbl2 tr:eq("+c+") td:eq("+a+")").text(n++);
+                }
+                c=c+1;
+                
+            }else{
+                for(a=d-1;a>=c-1;a--){
+                    $("#tbl2 tr:eq("+d+") td:eq("+a+")").text(n++);
+                }
+                
+            }
+            if(b%2==0){
+                for(a=c;a<d;a++){
+                    $("#tbl2 tr:eq("+a+") td:eq("+(d-1)+")").text(n++);
+                } d=d-1;
+            }
+            else{
+                for(a=d-1;a>=c;a--){
+                    $("#tbl2 tr:eq("+a+") td:eq("+(c-1)+")").text(n++);
+                }
+               
+            }
+            
+        }
+       
+            
+            
+    }
+
+    //테이블 추가(원)
+    /*function su(){  
+        m=prompt('값','');
+        while(y){
+            cce=cce+qwer;
+            if(y==m){
+                break;
+            }
+            y++;
+        }
+        let sum='<tr>'+cce+'</tr>'
+        console.log(sum);
+        for(z=0;z<m;z++){
+            $('#tbl2').append(sum);
+        }
+    }*/
+    $(document).ready(function(){
+       
+    })
+    //snail 출력
+    .on('click','#snail',function(){
+        for(i=0;i<q;i++){
+            $('#tbl').find('tr:eq('+i+') td:eq('+j+')').text(++n);
+        }
+    })
+
+    //스네이크 출력
+    .on('click','#snake',function(){
+        n=0;
+        for(i=0;i<q;i++){
+            if(i%2==0){
+                
+                for(j=0;j<w;j++){
+                    $('#tbl').find('tr:eq('+i+') td:eq('+j+')').text(++n);
+                }
+            }else{
+                for(j=0;j<w;j++){
+                    $('#tbl').find('tr:eq('+i+') td:eq('+j+')').text(n--);
+                   }
+            }
+        n=n+w;    
+            /*<!-- for(j=0;j<w;j++){
+                if(i%2!=0){
+                   for(j=4;j<1;j--){
+                    $('#tbl').find('tr:eq('+i+') td:eq('+j+')').text(n++);
+                   }
+                }else{
+                    $('#tbl').find('tr:eq('+i+') td:eq('+j+')').text(n++);
+                    //$('#tbl').find('tr:eq('+i+') td:eq('+j+')').append(n++);
+                }
+            } -->*/
+        }
+    })
+    //콘솔 창 출력
+    .on('click','#check',function(){
+       
+        console.log(q,w);
+    })
+    
+    .on('click','#btnAdd',function(){
+        for(i=0;i<q;i++){
+            for(j=0;j<w;j++){
+                $('#tbl').find('tr:eq('+i+') td:eq('+j+')').text(n++);
+                //$('#tbl').find('tr:eq('+i+') td:eq('+j+')').append(n++);
+            }
+        }
+        
+    })
+    .on('click',"#btnAdd2",function(){
+        
+        $('#tbl').append('<tr><td></td><td></td><td></td><td></td><td></td></tr>');
+        q=$('#tbl tr').length;
+        w=$('#tbl tr:eq(0) td').length;
+        n=1;
+        
+        return false;
+    }) 
+    .on('click',"#btndelete",function(){
+        //$("#tbl").find('tr:last').remove();
+        $("#tbl").find('tr:eq(2)').remove();//tr의인덱스 2를 지움
+        // :first  eq  last 
+        return false;
+        n=1;
+
+    }) 
+    .on('click',"#btnd",function(){
+        for(i=0;i<q;i++){
+            for(j=0;j<w;j++){
+                $('#tbl').find('tr:eq('+i+') td:eq('+j+')').text('');
+                //$('#tbl').find('tr:eq('+i+') td:eq('+j+')').append(n++);
+            }
+        }
+        n=1;
+        return false;
+    }) 
+        /*<!-- name=prompt('이름을 입력하세요');
+        if(name==''){
+            alert('왁마');
+            return false;
+        }
+        mobile=prompt('모바일 번호를 입력세요');
+        math=prompt('수학점수를 입력하세요',0);
+        str=`<tr><td>${name}</td><td>${mobile}</td><td>${math}</td></tr>`;
+        //str='<tr><td>'+name+'</td><td>'+mobile+'</td><td>'+math+'</td></tr>'
+        $("#tbl").append(str);
+       // $('#tbl').find('tr:eq(1) td:eq(2)').text(1,1);
+        return false; /*
+    })
+    
+
+
+     
+    .on("click",'#btnDelete',function(){
+        $("#tbl").find("td:last").remove();
+        return false;
+    })
+    .on('click','#btnPreppend',function(){
+        $("#tbl").prepend('<tr><td>1</td><td>2</td><td>3</td></tr>');
+        return false;
+    }) */
+</script>
+</html>

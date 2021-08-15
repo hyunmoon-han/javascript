@@ -1,3 +1,16 @@
+#### 202010813(금)test07
+n=1;
+x=n++; ->n값을 x에 넣고나서,n값을 증가시킨다.
+x=++n;  -> n값을 증갓시키고 x에 저장
+
+#### 20210812(목) test04참조,test05
+<input type=text/hidden/numer/date/datetime/money/textarea...>  =>.val();
+<select>,<textarea>=val();
+<input type=radio/checkbox>  =>.is(":checked")=>true/false
+값 화면에 추가 :.text(문자열 그대로 표시)//.html(문자열을 hhtml태그로 인식/화면에 그리기)
+- 뛰어쓰기:&nbsp;
+- 기본 선택:checked//seleted
+
 
 #### 20210811(수)test03
 - 콜백 : 실행을 등록해 놓고 맞으면 웹브라우저가 실행
@@ -13,7 +26,14 @@
     change:html tag안의 값이변경 됐을떄 
     
 -lable태그:for 속성을 사용하여 다른 요소와 결합할 수 있으며, 이때 <label> 요소의 for 속성값은 결합하고자 하는 요소의 id 속성값과 같아야. 요소를 결합하고자 하는 요소 내부에 위치시키면 for 속성을 사용하지 않더라도 해당 요소와 결합시킬 수 있습니다.텍스트를 클릭할 경우 <label> 요소와 연결된 요소를 곧바로 선택할 수 있어 사용자의 편의성을 높일 수 있습니다.
- 
+  - fadein(1000)/show() 서서히 나타남.fadein은 시간정살수있음//바로사라짐
+  - fadeout(1000)/hide() 시간으로 사라짐//바로사라짐
+  $(document).ready(function(){
+      이거는 페이지가 준비되고 바로 실행 (초기값 줄수있음)
+  })
+  .on("액션","id","function")
+
+  -style .변수 {}->   $().addclass('변수')  ->remeveclass()써
 
   
 

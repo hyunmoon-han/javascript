@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+    모바일번호:&nbsp;<input type="number" id="number" style="width: 300px;"><br><br>
+    이름 (실명):<input type="text" id="name"><br><br>
+    성별:<input type="radio" name="gender" id=mals>남성
+    <input type="radio" name="gender" id="female">여성<br><br>
+    생일:<input type="date" id=happy><br><br>
+    거주지역:<select id=ss>
+        <option>경기</option>
+        <option>강원</option>
+        <option>충남</option>
+        <option>충북</option>
+        <option>경남</option>
+        <option>경북</option>
+        <option>서울</option>
+        <option>부산</option>
+        <option>대전</option>
+    </select>
+    <br><br>
+    금융:
+    <input type="checkbox" name="pick" id="aa" value="재테크">재테크
+    <input type="checkbox" name="pick" id="bb" value="부동산">부동산
+    <input type="checkbox" name="pick" id="cc" value="주식">주식
+    <input type="checkbox" name="pick" id="dd" value="채권">채권
+    <br><br>
+    <input type="checkbox" name="pick" id="ee" value="선물/옵션">선물/옵션
+    <input type="checkbox" name="pick" id="ff" value="해외투자">해외투자
+    <input type="checkbox" name="pick" id="gg" value="공격">공격
+    <br><br>
+    취미:
+    <input type="checkbox" name="pick2" id="a">골프
+    <input type="checkbox" name="pick2" id="b">수영
+    <input type="checkbox" name="pick2" id="c">피트니스
+    <input type="checkbox" name="pick2" id="d">등산
+    <input type="checkbox" name="pick2" id="e">영화
+    <input type="checkbox" name="pick2" id="f">라이딩
+    <br><br>비밀번호:<input type="password" id=pw><br><br>
+    비밀번호 확인:<input type="password" id="pwcheck">
+    <br><br>
+    <button id="gogo">GO</button>
+    <button id="clear">clear</button>
+    <div id=dvShow style="background-color: aqua; width: 500px;height: 300px; border:solid black; "></div>
+</body>
+<script>
+    function ck(str){
+        if(str!=''){
+                str;
+        }else{
+            alert("빈 값이 있습니다 확인해주세요");
+            
+        }
+    }
+    let total;
+    let str1;
+    $(document)
+        .on("click", "#gogo", function () {
+            
+            str1 = $("#number").val();
+            ck(str1);
+            str2 = $("#name").val();
+
+            if ($("#mals").is(":checked")) {
+                str3 = "male";
+            } else if ($("#female").is(":checked")) {
+                str3 = "female";
+            } else {
+                alert("성별을 선택해줘.");
+                return false;
+            }
+            let str5;
+            str4 = $("#happy").val();
+            str0 = $("#ss").val();
+            if ($("input[name=pick]").is(':checked')) {
+                $('input[name=pick]:checked').each(function () {
+                    str5 = $(this).val();
+                })
+            } else {
+                alert('다시');
+                return false;
+            }
+            /*
+             if($("#aa").is(":checked")){
+                str5=" 재테크";
+            }
+            if($("#bb").is(":checked")){
+                str5+=" 부동산";
+            }
+            if($("#cc").is(":checked")){
+                str5+=" 주식";
+            }
+            if($("#dd").is(":checked")){
+                str5+=" 채권";
+            }
+            if($("#ee").is(":checked")){
+                str5+=" 선물";
+            }
+            if($("#ff").is(":checked")){
+                str5+=" 해외투자";
+            }
+            if($("#gg").is(":checked")){
+                str5+=" 공격";
+            }else{
+                alert("다시");
+                return false;
+            }*/
+            
+            str6 = '';
+            if ($("input[name=pick2]").is(':checked')) {
+                if ($("#a").is(":checked")) {
+                    str6 += " 골프";
+                }
+                if ($("#b").is(":checked")) {
+                    str6 += " 수영";
+                }
+                if ($("#c").is(":checked")) {
+                    str6 += " 피트니스";
+                }
+                if ($("#d").is(":checked")) {
+                    str6 += " 등산";
+                }
+                if ($("#e").is(":checked")) {
+                    str6 += " 영화";
+                }
+                if ($("#f").is(":checked")) {
+                    str6 += " 라이딩";
+                }
+            } else {
+                alert("취미를 선택해주세요");
+                return false;
+            }
+            if($("#pw").val()==''){
+                alert('비밀번호를 입력하세요');
+                return false;
+            }
+            str8 = $("#pwcheck").val();
+
+            if ($("#pw").val() == str8) {
+                str7 = $("#pw").val();
+            }
+            else {
+                alert("비밀번호를 확인 해주세요.");
+                return false;
+            }
+            ccc = '모바일번호:' + str1 + "\n이름(실명):" + str2 + '\n성별:' + str3 + '\n생일' + str4 + '\n거주지역:' + str0 + '\n재테크:' + str5 + '\n취미:' + str6 + '\n비밀번호:' + str7;
+            alert(ccc);
+
+
+            
+            str='모바일 번호:'+st1+'\n'+'이름(실명):'+st2+'\n'+'성별:'+st3+'\n'+'생일:'+st4+'\n'+'거주지역:'+st0+'\n'+'취미:'+st5+'\n'+'비밀번호:'+st6+'\n';
+            $("#dvShow").html(str); 
+        })
+    $("#clear").click(function(){
+        $("#number").val('');
+        $("#name").val('');
+        $("input[name=gender]").each(function(){
+            $(this).prop('checked',false);
+        })
+        $("#happy").val('');
+        $("input[name=pick]").each(function(){
+            $(this).prop('checked',false);
+        })
+        $('input[name=pick2]').each(function(){
+            $(this).prop('checked',false);
+        })
+        $("#pw").val("");
+        $("pwcheck").val('');
+    });
+</script>
+
+</html>
