@@ -1,3 +1,30 @@
+#### 20210816(월)test08
+-선택자     :   -id선택자:       #
+                -class선택자:    .
+                -태그선택자:     ''   $('body'),$('form')-$('form:eq(1)')
+- name      : $(input[name=?]).val('an') -중복시 :$('input[name=?]:eq(1)').val('an')
+$('input[name=?]#?//.?').val('an') 도 사용 가능
+-prop  -변형 ->prop('type','text')
+-  정규표현식:[]-> or,또는 
+            :*  ->0개 이상의 문자
+            :.  ->한개의 문자.
+            :{} ->반봇횟수
+            :^  ->~로 시작한는
+            :$  ->~로 끝나는 
+the  The  -> 대소문자 구분없이   "[Tt]he"<- 정규표현식  []은 or
+a로 시작하는 모든 단어 : "a*"->at,a,anthoer
+"a." ->at,an,am
+"a.{3}"  -> any,amy,ami,and
+close 가깝다.
+closest가장 가까운
+k=$("#a").closest('table').prop('id')
+
+append  prepend 기준 태그의 안쪽 앞뒤에 추가
+after   before <- 기준태그의 바깥 앞뒤에 추가
+.empty()  -> 비움
+.hasClass()  포함 여부 -$('table')has('redColor');->true /false
+gt(greater than  ~보다 큰)
+lt(Less than ~보다 작은)
 #### 202010813(금)test07
 n=1;
 x=n++; ->n값을 x에 넣고나서,n값을 증가시킨다.

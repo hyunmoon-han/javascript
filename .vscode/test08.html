@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<style>
+    td{
+        width: 50px;
+        height: 30px;
+        border: 1px solid black;
+    }
+    table{
+        border-collapse: collapse ;
+        
+    }
+    /*th{
+        border: 1px solid white;
+        background-color: chartreuse;
+        color: rgb(156, 96, 204);
+        width: 100px;
+        height: 50px;
+    } -->*/
+    .redColor{
+        background-color: red;
+    }
+    
+</style>
+<body>
+    <!-- <table border=1 id="tbl">
+        <tr><td><input type="text" id="txtName" > </td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+    <br>--> 
+    <input type="button" id="btnGo" value="GO">
+    <table id=tbl2 border=1>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        
+    </table>
+    <input type="text"  id="txtNum">
+    <input type="button" id="btnGo" value="alternative"><br>
+    <div style="width: 300px; height: 100px;background-color: yellow; display: none;"></div>
+    <div style="width: 300px; height: 100px;background-color: green; "></div>    
+    <!-- <input type="text" name="txtName" value="블랙핑크"><br>
+    <input type="radio" name="txtGender" >성별<br>
+    <input type="checkbox" name="chkName" value="체크박스"> 체크박스 -->
+    <select name="selName" id="selName">
+
+    </select>
+</body>
+<script>
+    var ar=[9,8,7,6,5,4,3,2,1,0];
+    var student={name:'moon',age:'25',gender:'male',mobile:'1111'}
+    let bcolor;
+    let a=1;
+    let k=0;
+    $(document)
+    .ready(function(){//웹페이지 로드(webpage load) 후에 실행 
+        //document.write('휴먼교육센터')//페이지가 새로 로드
+       // $('body').append('<br>휴먼교육센터');
+
+        // for(i=0;i<ar.length;i++){
+        //     document.write(ar[i]+'<br>');
+        // }
+        // for(v in ar){//인덱스 출력
+        //     document.write(v+'<br>');
+        // }
+        // for(v of ar){ //출력  
+        //     document.write(v+'<br>')
+        // }
+        
+        // ar.forEach(function(value,index){
+        //     document.write(index+'='+value+'<br>');
+        // })
+        // ar.forEach(function(value){
+        //     document.write(value+'<br>');
+        // })
+        // $.each(student,function(index,value){//배열이 들어가도 되고 객체가들어가도됨
+        //     document.write(index+'='+value+'<br>')
+        // })
+        // k=1;
+        // $("#tbl2 tr").each(function(){
+        //     $(this).find('td').each(function(){
+        //             $(this).text(k++)
+        //     })
+        // })
+
+        // $('input[name="txtName"],input[name="txtGender"]').css('background-color','yellow');
+        // $("input[name^='txt']").css('background-color','yellow')
+        // $('input[name$="Name"]').css('color','red');
+        //$('input[name*="Name"]')
+        //$("#tbl tr:eq(0) td:eq(1)")직계자손
+        //$("#tbl >tr:eq(0)> td:eq(1)")//중첩되도 다 사용
+        
+        //테이블 색상 추가 
+        // $('table tr:odd').css('background-color','red');//odd(홀수)/even(짝수)
+        // $('table tr:even').css('background-color','cyan');
+    })
+    //마우스 enter시 색상바꾸기 ,전역 변수 사용해서 원래 색상저장
+    .on('mouseenter','table tr',function(){
+        bcolor=$(this).css('background-color');
+        //console.log(bcolor);
+        $(this).css('background-color','brown')
+        return false;
+    })
+    //마우스 leave시 색상바꾸기
+    .on('mouseleave','table tr',function(){
+        $(this).css('background-color',bcolor)
+    })
+    //버튼 클릭시 prop이용해서 타입 바꾸기
+    // $('#btnGo').click(function(){
+    //     $("#tbl tr:eq(0) td:eq(0) input").prop('type','checkbox')
+            //$("#tbl tr:gt(0) td:eq(0) input").prop('type','checkbox')
+            //$("#tbl tr:lt(0) td:eq(0) input").prop('type','checkbox')
+    // });
+
+    //td클릭시 숫자증가 단,이미있으면 증가하지 않음-> 추가 클릭시 숫자지워지고 넘버 지속
+    .on('click','table td',function(){
+        b=$(this);
+        if(b.text()==''){
+            b.text(a++);
+            b.css('background-color','yellow');
+            $('#txtNum').trigger('click')//선택자를 호출
+            return false;
+        }else{
+            b.text('');
+            a--;
+            b.css('background-color',bcolor);
+            return false;
+        }
+    })
+    //trigger  toggleClass사용
+    .on('click','#txtNum',function(){
+       // $(this).val(--a);
+        $(this).toggleClass('redColor');
+        $(this).val(a);
+        //a++;
+        return false;
+    })
+    //visible 사용,
+    .on('click','#btnGo',function(){
+        // $('div:visible').hide();
+        // $('div:eq(0)').show();
+        if(a==1){
+            $('table').append(`<tr><td>${a}</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`)
+            a++;
+        }else if(a==2){
+            $('table').after("input type=text value=after");
+            a++
+        }else if(a==3){
+            $('table').prepend(`<tr><td>${a}</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`);
+            a++
+        }else if(a==4){
+            $('table').before("input type=text value=before");
+            
+        }
+        return false;
+    })
+    
+    .on('click','#btnGo',function(){
+        str='<option>'+k+'</option>';
+        $("#selName").append(str)
+        k++;
+        return false;
+    })
+    .on('mousemove',function(e){
+        console.log(e.clientX+','+e.clientY);
+        return false;
+    })
+    
+
+</script>
+
+</html>

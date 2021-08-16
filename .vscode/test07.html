@@ -58,7 +58,7 @@
 <br><br>
 <table border=1 id='tbl2'> 
 
-</table>
+</table> 
 </body>
 <script>
     n=1;
@@ -71,8 +71,9 @@
     //let w=$('#tbl tr:eq(0) td').length;
    
    
-    //테이블 추가
+    //테이블 추가,//snail 출력
     function su(){
+        // document.write('<table border=1 id=tbl2></table>');
         o=5;
         m=prompt("수를 입력하세요.");
         for(i=0;i<m;i++){
@@ -89,12 +90,10 @@
                     $("#tbl2 tr:eq("+c+") td:eq("+a+")").text(n++);
                 }
                 c=c+1;
-                
             }else{
                 for(a=d-1;a>=c-1;a--){
                     $("#tbl2 tr:eq("+d+") td:eq("+a+")").text(n++);
                 }
-                
             }
             if(b%2==0){
                 for(a=c;a<d;a++){
@@ -105,13 +104,8 @@
                 for(a=d-1;a>=c;a--){
                     $("#tbl2 tr:eq("+a+") td:eq("+(c-1)+")").text(n++);
                 }
-               
             }
-            
         }
-       
-            
-            
     }
 
     //테이블 추가(원)
@@ -133,12 +127,31 @@
     $(document).ready(function(){
        
     })
-    //snail 출력
-    .on('click','#snail',function(){
-        for(i=0;i<q;i++){
-            $('#tbl').find('tr:eq('+i+') td:eq('+j+')').text(++n);
-        }
-    })
+    //스네일
+    /*
+    n=parseInt(prompt('n값을 입력하시오'));
+// 동(East)서(West)남(South)북(North)
+nE=n;nW=0;nS=n;nN=0;
+way='E';
+x=0;y=0;
+for(i=1;i<=n*n;i++){
+   $(`$('#tbl tr:eq(${x}) td:eq(${y})')`).text(i);
+   if(way=='E'){
+       y++;
+       if(y=>nE) { y--; x++; way='S'; nE--; }
+   } else if(way=='W') {
+       y--;
+       if(y<=nW) { y++; x--; way='N'; nW++; }
+   } else if(way=='S') {
+       x++;
+       if(x>=nS){ x--; y--; way='W'; nS--; }
+   } else if(way=='N) {
+       x--;
+       if(x<=nN) { x++; y++, way='E'; nN++ }
+   }
+}
+
+    */
 
     //스네이크 출력
     .on('click','#snake',function(){
@@ -180,10 +193,9 @@
                 //$('#tbl').find('tr:eq('+i+') td:eq('+j+')').append(n++);
             }
         }
-        
     })
+
     .on('click',"#btnAdd2",function(){
-        
         $('#tbl').append('<tr><td></td><td></td><td></td><td></td><td></td></tr>');
         q=$('#tbl tr').length;
         w=$('#tbl tr:eq(0) td').length;
@@ -191,6 +203,7 @@
         
         return false;
     }) 
+
     .on('click',"#btndelete",function(){
         //$("#tbl").find('tr:last').remove();
         $("#tbl").find('tr:eq(2)').remove();//tr의인덱스 2를 지움
@@ -199,6 +212,7 @@
         n=1;
 
     }) 
+
     .on('click',"#btnd",function(){
         for(i=0;i<q;i++){
             for(j=0;j<w;j++){
