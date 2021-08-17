@@ -1,3 +1,25 @@
+#### 20210817(화)
+HTML<->Server 통신
+-<form method =post/get action=서버프로그램>
+    <input type=text/hidden/radio/checkbox>
+    <select>
+    <textarea>
+    <input type=submit/reset>
+</form>  < - 전제 화면 refresh
+
+javascrip<->Server 통신:                                        text < JSON < XML
+AJAX(Asychronous Javascript And Xml)     XML->HTML확장판  데이터를 보낼떄 xml,text(String),json으로 보낼수 있음
+JSON(JavaScript Object Noatation) 객체표기법 
+-전체화면 refresh가 필요없음(주고받는 데이터가 감소)
+  
+동기식(Synchronous):데이터를 보내고 응답기다림 // 비동기식(Asynchronous):데이터를 보내고 기다림x,client가 콜백등록하고 응답오면 콜백을 실행시킴.
+- .is(":checked/visible/hidden/disabled")
+- .index();
+- $('td').height(); 마진 포함    $('td').innerheight();텍스트만
+- inNan(); notnumbeer->정수 아니면 true 맞으면 false  //$.isNumeric() 숫자면 true
+- attr(type,text):type 을 text로 없으면 생성  removeattr(type) : 삭제
+- k=$("name").attr(type): type 을 찾아줌
+
 #### 20210816(월)test08
 -선택자     :   -id선택자:       #
                 -class선택자:    .
@@ -15,6 +37,7 @@ the  The  -> 대소문자 구분없이   "[Tt]he"<- 정규표현식  []은 or
 a로 시작하는 모든 단어 : "a*"->at,a,anthoer
 "a." ->at,an,am
 "a.{3}"  -> any,amy,ami,and
+
 close 가깝다.
 closest가장 가까운
 k=$("#a").closest('table').prop('id')
@@ -22,9 +45,10 @@ k=$("#a").closest('table').prop('id')
 append  prepend 기준 태그의 안쪽 앞뒤에 추가
 after   before <- 기준태그의 바깥 앞뒤에 추가
 .empty()  -> 비움
-.hasClass()  포함 여부 -$('table')has('redColor');->true /false
+.hasClass()  포함 여부 -$('table')hasclass('redColor');->true /false
 gt(greater than  ~보다 큰)
 lt(Less than ~보다 작은)
+
 #### 202010813(금)test07
 n=1;
 x=n++; ->n값을 x에 넣고나서,n값을 증가시킨다.

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+    <form method="post" action="http://human.com/loginServlet">
+        <input type="text" name="userid">
+        <input type="password" name="posscode">
+        <input type="submit" value="Login">
+        <input type="button" value="Login" id="btnLogin">
+        <input type="reset" value="Clear">
+    </form> 
+</body>
+<script>
+    $(document).on('submit',function(){//폼태그를 서버에서 확인하지 않고 여기서 핸들링
+        if($("input[name=userid] ").val()==''){
+            alert('유저 ID를 입력하세요.');
+            return false;
+        }
+        if($("input[name=passcode] ").val()==''){
+            alert('PW 를 입력하세요.');
+            return false;  // break같은 개념
+        }
+        return true;//continue 랑 같은 개념
+    })
+    .on('click','#btnLogin',function(){
+        if($("input[name=userid] ").val()==''){
+            alert('유저 ID를 입력하세요.');
+            return false;
+        }
+        if($("input[name=passcode] ").val()==''){
+            alert('PW 를 입력하세요.');
+            return false;
+        }
+        $('from').submit();// form 태그가 여러개일 경우 id지정
+    })
+    //Ajax
+    .on("click",'#btnLogin',function(){
+        //method 에따라 두가지 
+        $.post('http://my.service.com:5096/adbinm....',//url
+            {userid:$('input[name=userid]').val(),
+            passcode:$('input[name=passcode]').val()},//data
+            function(txt){ //success
+
+            },
+            'text' //datatype
+            );
+            $.get(//simple 버전
+                'http://my.service.com:5096/adbinm....',//url
+                {userid:$('input[name=userid]').val(),
+                passcode:$('input[name=passcode]').val()},//data
+                function(txt){ //success
+
+                },
+                'text' //datatype
+            )
+       
+
+        $.ajax({//두가지 다 포함. standard버전
+            method:'post',//'get' 
+            url:'http://my.service.com:5096/adbinm....',//==action
+            data:'userid='+$('input[name=userid]').val()+'&passcode='+$('input[name=passcode]').val(), //보낼 테이터/
+           // {userid:$('input[name=userid]').val(),passcode:'$('input[name=passcode]').val()}
+            dataType:'text', //text,json,xml  / 데이터 타입
+            success:function(txt){//설정해놓은 콜백함수
+                console.log();
+                alert();
+                $("table tr:eq(2)").text(tex)
+            },//server가 제대로 응답   ==try
+            error:function(){
+                alert('에러발생');
+            },//server가 응답을 안하거나,에러가 발생 ==catch
+            complete:function(){
+                alert('AJAX 호출 완료')
+            }//모든 거(success/error)실행후 후 처리==finally
+        })
+    })
+</script>
+</html>

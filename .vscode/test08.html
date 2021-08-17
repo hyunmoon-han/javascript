@@ -63,10 +63,11 @@
     <select name="selName" id="selName">
 
     </select>
+    <input type="radio" name="gender" >
 </body>
 <script>
     var ar=[9,8,7,6,5,4,3,2,1,0];
-    var student={name:'moon',age:'25',gender:'male',mobile:'1111'}
+    var student={name:'moon',age:'25',gender:'male',mobile:{a:'12',b:'21'}};
     let bcolor;
     let a=1;
     let k=0;
@@ -74,7 +75,10 @@
     .ready(function(){//웹페이지 로드(webpage load) 후에 실행 
         //document.write('휴먼교육센터')//페이지가 새로 로드
        // $('body').append('<br>휴먼교육센터');
-
+        document.write('suturnt='+$.isEmptyObject(student)+"<br>");//객체가 비워져있냐/true/false
+        document.write('ar='+$.isArray(ar)+"<br>");//배열 여부확인
+        document.write('//'+$.inArray(4,ar)+"<br>")//4가 ar 배열에 있냐 4가 속해있는 인덱스가 나옴 없으면 -1
+        document.write('now='+$.now())//1초에 1000번씩 증가하는 시계 timestamp
         // for(i=0;i<ar.length;i++){
         //     document.write(ar[i]+'<br>');
         // }
@@ -177,14 +181,35 @@
         str='<option>'+k+'</option>';
         $("#selName").append(str)
         k++;
+        //
+        console.log('lenths='+$("input").length);
+        console.log('lenths2='+$("input[type=text]").length);
         return false;
     })
     .on('mousemove',function(e){
         console.log(e.clientX+','+e.clientY);
         return false;
     })
-    
-
+    .on('click','td',function(){
+        j=$(this).index();//td의 index
+        i=$(this).parent().index();//tr의 index
+        console.log(i+','+j);
+        return false;
+    })
+    .on('click','input',function(){
+        console.log('input index='+$(this).index());
+        return false;
+    })
+    .on('click','input[type=text]',function(){
+        console.log('input index='+$(this).index());
+        return false;
+    })
+    $(window)
+    .resize(function(){
+        console.log($(window).widht()+','+$(window).height());
+        
+        return false;
+    })
 </script>
 
 </html>
