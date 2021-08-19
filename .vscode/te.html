@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<style>
+    td{
+        width: 50px;
+        height: 50px;
+    }
+</style>
+<body>
+    <input type="button" id="gogo" value="nono">
+</body>
+<script>
+    document.write('<table id="tbl" border=1></table>')
+    $(document)
+    .ready(function(){
+
+    })
+    .on('click','#gogo',function(){
+        k=prompt('숫자를 입력하세요.','')
+        for(a=0;a<k;a++){
+            $('#tbl').append('<tr></tr>');
+            for(b=0;b<k;b++){
+                $('#tbl tr:eq('+a+')').append('<td></td>');
+            }
+        }
+        c=1;
+        $('#tbl tr').each(function(){
+            $(this).find('td').each(function(){
+                $(this).text(c++);
+            })
+        })
+        
+    })
+    .on('click','td',function(){
+        $(this).css('background-color','red');
+    })
+</script>
+</html>
