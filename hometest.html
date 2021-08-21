@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<style>
+    select {
+        width: 30%;
+        margin-right: 60px;
+    }
+
+    section {
+        height: 530px;
+    }
+
+    #tl2 {
+        width: 220px;
+    }
+
+    #tl3 {
+        width: 300px;
+    }
+</style>
+
+<body>
+    <header style="height: 150px; background-color: yellow;">
+
+    </header>
+    <section>
+
+        <div>
+            <select name="tl1" id="tl1" multiple size="15">
+                <option value="에스프레소" value2='2000'>에스프레소 2000원</option>
+                <option value="아메리카노" value2='3000'>아메리카노 3000원</option>
+                <option value="카푸치노" value2='4000'>카푸치노 4000원</option>
+                <option value="마끼야또" value2='4500'>마끼야또 4500원</option>
+                <option value="">---------</option>
+                <option value="딸기라떼" value2='5000'>딸기라떼 5000원</option>
+                <option value="싱글자몽에이드" value2='5500'>싱글자몽에이드 5500원</option>
+                <option value="블루레몬에이드" value2='5500'>블루레몬에이드 5500원</option>
+                <option value="요거트스무디" value2='5000'>요거트스무디 5000원</option>
+                <option value="베리베리초코초코" value2='7000'>베리베리초코초코 7000원</option>
+                <input type="hidden" value="" id="hidden">
+            </select>
+            <select name="tl2" id="tl2" multiple size="10">
+            </select>
+            <select name="tl3" id="tl3" multiple size="15">
+            </select>
+
+            <br>
+            메뉴명:<input type="text" id="name">
+            모바일 번호:<input tupe="text" id="mobile">
+            <input type="button" id="go" value="완료">
+            <input type="button" id='mcencle' value='취소'> <br><br>
+            가격:<input type="text" id="price">
+            총 결제금액:<input type="text" id="totalprice"><br><br>
+            수량:<input type="text" id="num"><br><br>
+            합계:<input type="text" id="sum">
+
+
+
+
+            <input type="button" value="추가" id="add">
+            <input type="button" id="order" value="주문">
+            <input type='button' id='cencle' value='삭제' </div>
+
+    </section>
+    <footer style="height: 150px; background-color:greenyellow">
+
+    </footer>
+</body>
+<script>
+    let price;
+    let sum;
+    let num;
+    let name;
+    let mobile;
+    let count=0;
+    let totalprice=0;
+    $(document)
+        .ready(function () {
+
+        })
+        //테이블 클릭시 select값들의 정보이동
+        .on('click', '#tl1', function () {
+            name = $(this).val();
+            $('#name').val(name);
+            price = $('#tl1 option:selected').attr('value2');
+            $("#price").val(price);
+            $('#num').val('');
+            $('#sum').val('');
+        })
+        //수량입력수 blur하면 합계계산후 화면 표시
+        .on('blur', '#num', function () {
+            num = $(this).val();
+            $('#sum').val(num * price);
+            sum = $('#sum').val();
+        })
+        //추가버튼 클릭시 정보값 이동
+        .on('click', '#add', function () {
+            j=$('#sum').val();
+            if(j==''||j==null){
+                alert('값을 입력하고 주문을 해주세요.');
+                return false;            
+            }else{
+                $("#tl2").append('<option value1=' + name + ' value2=' + num + ' value3=' + sum + ' >' + name + '&nbsp;' + num + '&nbsp;' + sum + '</option>');
+                count++;
+                return false;
+            }
+        })
+        //주문 버튼시 입력값들이 테이블로 이동
+        .on('click', '#order', function () {
+            mobile = prompt('모바일 번호를 입력하세요.');
+            $("#mobile").val(mobile);
+            totalprice=0;
+            for(i=0;i<count;i++){
+                    to=$('#tl2 option:eq('+i+')').attr('value3');
+                    console.log(to);
+                    totalprice=totalprice+parseInt(to);
+                    $('#totalprice').val(totalprice);
+            }
+        })
+        //테이블 클릭시 해당값 input태그로 전달
+        .on('click', '#tl2', function () {
+            console.log(name);
+            name = $('#tl2 option:selected').attr('value1');
+            num = $('#tl2 option:selected').attr('value2');
+            sum = $('#tl2 option:selected').attr('value3');
+            $('#name').val(name);
+            $('#num').val(num);
+            $('#sum').val(sum);
+            $("#price").val(sum / num);
+            
+
+        })
+        //삭제버튼시 select 해당 값 초기화 input 값도 초기화
+        .on('click', "#cencle", function () {
+            h = confirm('정말로 삭제 하시겠습니까?');
+            if (h == true) {
+                k = $('#tl2 option:selected').attr('value3');
+                console.log(k);
+                totalprice=totalprice-parseInt(k);
+                $('#totalprice').val(totalprice);
+                $('#tl2 option:selected').remove();
+                remove2();
+               
+                count=count-1;
+                return false;
+            } else {
+                return false;
+            }
+
+        })
+        .on('click', '#mcencle', function () {
+            $('#order').trigger('click');
+        })
+        .on('click','#go',function(){
+            for(i=0;i<count;i++){
+                    name=$('#tl2 option:eq('+i+')').attr('value1');
+                    num=$('#tl2 option:eq('+i+')').attr('value2');
+                    sum=$('#tl2 option:eq('+i+')').attr('value3');
+                    console.log(name,num,sum);
+                    $('#tl3').append('<option>'+mobile+'&nbsp;&nbsp;&nbsp;'+name+'&nbsp;&nbsp;&nbsp;'+num+'&nbsp;&nbsp;&nbsp;'+sum+'</option>')
+
+                
+            }
+            hm=$('#tl2 option:eq(0)').attr('value2');
+            console.log(hm);
+           
+           
+        })
+    //초기화 작업
+    function remove2() {
+        $("#name").val('');
+        $('#num').val('');
+        $("#sum").val('');
+        $('#price').val('');
+    }
+
+</script>
+
+</html>
